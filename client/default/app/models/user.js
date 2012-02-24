@@ -19,21 +19,19 @@ var users = {
 	},
 	userValidate : function(username, password, cb) {
 		var users = this.data;
-		//unblock process
-		setTimeout(function() {
-			for(var i = 0; i < users.length; i++) {
-				var user = users[i];
-				if(user.username === username && user.password === password) {
-					if(cb != undefined) {
-						cb(true);
-						return;
-					}
-				}
+		$fh.act({
+			act : "validateUser",
+			req : {
+				name : username,
+				pwd : password
 			}
-			if(cb != undefined) {
+		}, function(res) {
+			if(res.res === "valid") {
+				cb(true);
+			} else {
 				cb(false);
 			}
-		}, 100);
+		});
 	},
 	getUserList : function(callback) {
 		var retArr = [];
@@ -43,7 +41,7 @@ var users = {
 				var user = users[i];
 				retArr.push(user.username);
 			}
-			if (callback){
+			if(callback) {
 				callback(retArr);
 			}
 		}, 100)
