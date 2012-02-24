@@ -8,5 +8,6 @@ $(document).ready(function() {
 			mainPageView.find("#loginBtn").removeAttr("disabled");
 			mainPageView.find("#loginBtn").button("enable");
 		});
+		bindEvents();
 	});
 });

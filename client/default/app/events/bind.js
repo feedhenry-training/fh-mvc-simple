@@ -21,6 +21,3 @@ function bindEvents(){
 	});
 }
 
-$(document).ready(function(){
-	bindEvents();
-});
