@@ -6,7 +6,7 @@
 * Controller Ð Process User Actions
 * Model Ð Data Logic
 
-<img src="./docs/MVCMODEL.png"/>
+<img src="https://github.com/keyang-feedhenry/fh-mvc-simple/raw/master/docs/MVCMODEL.png"/>
 
 ## Differences between Feedhenry Hybrid App and a Website
 * Event Driven -- User actions trigger DOM events.
@@ -19,7 +19,7 @@
 * Maintainability: Simpler to debug etc.
 * Readability: Easier for other developers using code.
 
-<img src="./docs/FHMVCMODEL.png"/>
+<img src="https://github.com/keyang-feedhenry/fh-mvc-simple/raw/master/docs/FHMVCMODEL.png"/>
 
 ## Model-View-Controller Code
 
