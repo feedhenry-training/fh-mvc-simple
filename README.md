@@ -43,9 +43,9 @@ Add following code:
 
 Link bind.js to index.html
 
-Question: When bindEvents function get invoked?
+**Question**: When bindEvents function get invoked?
 
-Answer: Since binding events works only when target element exists, we could invoke bindEvents once all views have been imported.
+**Answer**: Since binding events works only when target element exists, we could invoke bindEvents once all views have been imported.
 
 Currently, we need add two events:
 
@@ -73,7 +73,7 @@ Change view means hide current view and display next view. Just simply invoke ch
 
 Now, if you run the project in Feedhenry Platform, you are able to login with any credentials and logout.
 
-Next chapter will introduce how to define a model and validate credential data using model. Please checkout v4 branch.
+Next chapter will introduce how to define a model and validate credential data using model. Please checkout <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v4">v4 branch</a>.
 
 
 
