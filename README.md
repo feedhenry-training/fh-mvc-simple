@@ -38,6 +38,7 @@ It is more important to have a "view" concept in mind.
 
 ### Controller
 Controllers have direct associations with views and models which are:
+
 * View: DOM/jQuery. Controllers ask views to update.
 * Model: Javascript. Controllers ask models to perform data process progress.
 Controllers receive user actions or actions from other controllers.
