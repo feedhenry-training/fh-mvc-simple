@@ -1,4 +1,4 @@
-# Main View and Logged in View Implementation (v2 branch)
+# "MainPage" View and "Logged" View Implementation (v2 branch)
 
 ## Outline:
 
