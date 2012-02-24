@@ -2,9 +2,9 @@
 
 ## What is MVC
 * MVC is a pattern for code decoupling /division
-* View Ð Render User Interface 
-* Controller Ð Process User Actions
-* Model Ð Data Logic
+* View ï¿½ Render User Interface 
+* Controller ï¿½ Process User Actions
+* Model ï¿½ Data Logic
 
 <img src="https://github.com/keyang-feedhenry/fh-mvc-simple/raw/master/docs/MVCMODEL.png"/>
 
@@ -79,6 +79,7 @@ Here is a simple model code in Javascript:
 ## Example
 App Name: Personal Info Application
 Features:
+
 * Login/Logout
 * Using Cloud Data
 * Pin me on Map
