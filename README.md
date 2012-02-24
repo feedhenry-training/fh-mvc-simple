@@ -59,7 +59,7 @@ Link init.js to index.html
 
 Now the project will render a page that asks users to login. Since there is no events handler, the login button will not work.
 
-Next step in v3 branch will introduce how to create a controller and how to send controller messages from UI.
+Next step in <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v3">v3 branch</a> will introduce how to create a controller and how to send controller messages from UI.
 
 
 
