@@ -91,5 +91,5 @@ Finally, write some basic HTML code to index.html.
 			
 
 
-Ok. Fingers crossed. Let's proceed to v3 branch.
+Ok. Fingers crossed. Let's proceed to <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>.
 
