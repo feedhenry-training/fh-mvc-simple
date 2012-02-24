@@ -2,9 +2,9 @@
 
 ## What is MVC
 * MVC is a pattern for code decoupling /division
-* View � Render User Interface 
-* Controller � Process User Actions
-* Model � Data Logic
+* View -- Render User Interface 
+* Controller -- Process User Actions
+* Model -- Data Logic
 
 <img src="https://github.com/keyang-feedhenry/fh-mvc-simple/raw/master/docs/MVCMODEL.png"/>
 
