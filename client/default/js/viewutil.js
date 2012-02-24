@@ -35,14 +35,14 @@ function changeView(viewId) {
  * 
  */
 function getView(viewId){
-	return $("#"+viewId);
+	return $("body>#"+viewId);
 }
 
 /**
  * import views html content to DOM.
  */
 function importViews(callback){
-	var pages=$(".page");
+	var pages=$("body>.page");
 	var viewFolder="./app/views/";
 	var count=pages.length;
 	pages.each(function(){
@@ -53,7 +53,7 @@ function importViews(callback){
 			dataType:"text",
 			success:function(res){
 				console.log(page.attr("id"));
-				$("#"+page.attr("id")).html(res);
+				$("body>#"+page.attr("id")).html(res);
 				count--;
 				if (count===0 && callback){
 					callback();
