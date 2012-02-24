@@ -28,9 +28,36 @@ Add following code to mainPage.html
 				<input type="password" id="password" placeholder="Password"/>
 			</p>
 			<p>
-				<!-- We assume controller userAuth exists -->
-				<input type="button" value="Login" id="loginBtn" disabled="disabled"/>
+				<input type="button" value="Login" id="loginBtn"  disabled="disabled" />
 			</p>
 			<p id="info" ></p>
 		</div>
+
+
+Add following code to logged.html
+
+		<h1>Welcome to Login</h1>
+		<h3>Your Name is:<span id="name"></span></h3>
+		<input  type="button" value="logout" class="logout" />
+
+The content of above two files will be loaded and injected to index.html in different placeholders.
+To perform this action, add a init.js file to ./js folder. init.js will do some initialisation before app really loaded.
+Add following code to init.js
+
+$(document).ready(function() {
+	importViews(function() {//import all views. callback when finished
+		changeView("mainPage");
+		// go to the first view: mainPage
+		var mainPageView = getView("mainPage");
+	});
+});
+
+Link init.js to index.html
+
+Now the project will render a page that asks users to login. Since there is no events handler, the login button will not work.
+
+Next step in v3 branch will introduce how to create a controller and how to send controller messages from UI.
+
+
+
 
