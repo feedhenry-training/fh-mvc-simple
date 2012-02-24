@@ -41,16 +41,19 @@ Add following code to logged.html
 		<input  type="button" value="logout" class="logout" />
 
 The content of above two files will be loaded and injected to index.html in different placeholders.
-To perform this action, add a init.js file to ./js folder. init.js will do some initialisation before app really loaded.
+
+## Step 2 -- Render a View(MainPage View) at the start of the app.
+
+Add a init.js file to ./js folder. init.js will do some initialisation before app really loaded.
 Add following code to init.js
 
-$(document).ready(function() {
-	importViews(function() {//import all views. callback when finished
-		changeView("mainPage");
-		// go to the first view: mainPage
-		var mainPageView = getView("mainPage");
-	});
-});
+		$(document).ready(function() {
+			importViews(function() {//import all views. callback when finished
+				changeView("mainPage");
+				// go to the first view: mainPage
+				var mainPageView = getView("mainPage");
+			});
+		});
 
 Link init.js to index.html
 
