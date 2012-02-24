@@ -26,6 +26,7 @@
 ### View
 For HTML, view Code is HTML & CSS based. If an extra framework (like Sencha) is imported, Views are usually wrapped by Javascript code.
 The most basic and simple View is a div tag which isolates the single Html page to many views.
+
 For example:
 
 		<div class="page" id="viewId">
