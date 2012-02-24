@@ -73,7 +73,23 @@ put following code to viewutil.js
 				});
 			}
 			
-Above code does some repeated and tedious view manipulation work.
+Above code does some repeated and tedious view manipulation work.			
+			
+Finally, write some basic HTML code to index.html.
+
+		<!DOCTYPE HTML>
+		<html>
+			<head>
+				<link rel="stylesheet" type="text/css" href="./css/basic.css" />
+				<script type="text/javascript" src="./js/jquery.js"></script>
+				<script type="text/javascript" src="./js/viewutil.js"></script>
+			</head>
+			<body>
+			</body>
+		</html>
+
+			
+
 
 Ok. Fingers crossed. Let's proceed to v3 branch.
 
