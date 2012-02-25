@@ -95,9 +95,9 @@ The next steps will be more advanced.
 
 Please checkout:
 
-* use cloud data/ cloud validation (v5 branch)
-* use 3rd party components  (google map) (v6 branch)
-* construct a list view (v7 branch)
-* use jQuery Mobile.  (v8 branch)
+* use cloud data/ cloud validation (<a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v5">v5 branch</a>)
+* use 3rd party components  (google map) (<a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v6">v6 branch</a>)
+* construct a list view (<a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v7">v7 branch</a>)
+* use jQuery Mobile.  (<a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v8">v8 branch</a>)
 
 
