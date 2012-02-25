@@ -54,4 +54,23 @@ add following content to map.js
 
 The pinCurrentLocation method will locate current location first and mark it on google map. The controller updates view.
 
+### Step 3 -- add map view 
+
+Create map.html in ./app/views folder and add a map placeholder in index.html
+
+put following content to map.html
+
+		<h1>Map</h1>
+		<div id="map_div"></div>
+		<p>
+			Your Location:<span id="lat"></span>, <span id="long"></span>
+		</p>
+		<p>
+			Status:<span id="status"></span>
+		</p>
+		<button id="mapback" >
+			Back
+		</button>
+		<input type="button"  value="logout" class="logout" />
+
 
