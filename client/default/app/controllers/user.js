@@ -1,6 +1,6 @@
 var user={
 	showUserList:function(){
-		getView("userList").find("users").html("");
+		getView("userList").find("#users").html("");
 		users.getUserList(function(arr){
 			for (var i=0;i<arr.length;i++){
 				var user=arr[i];
