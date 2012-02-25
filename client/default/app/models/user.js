@@ -13,26 +13,24 @@ var users = {
 			that.data = res.data;
 			that.isDataLoaded = true;
 			if(callback) {
-				callback()
+				callback(res.data);
 			}
 		});
 	},
 	userValidate : function(username, password, cb) {
 		var users = this.data;
-		//unblock process
-		setTimeout(function() {
-			for(var i = 0; i < users.length; i++) {
-				var user = users[i];
-				if(user.username === username && user.password === password) {
-					if(cb != undefined) {
-						cb(true);
-						return;
-					}
-				}
+		$fh.act({
+			act : "validateUser",
+			req : {
+				name : username,
+				pwd : password
 			}
-			if(cb != undefined) {
+		}, function(res) {
+			if(res.res === "valid") {
+				cb(true);
+			} else {
 				cb(false);
 			}
-		}, 100);
+		});
 	}
 };
