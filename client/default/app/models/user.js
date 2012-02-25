@@ -13,7 +13,7 @@ var users = {
 			that.data = res.data;
 			that.isDataLoaded = true;
 			if(callback) {
-				callback(res.data);
+				callback()
 			}
 		});
 	},
@@ -32,5 +32,18 @@ var users = {
 				cb(false);
 			}
 		});
+	},
+	getUserList : function(callback) {
+		var retArr = [];
+		var users = this.data;
+		setTimeout(function() {
+			for(var i = 0; i < users.length; i++) {
+				var user = users[i];
+				retArr.push(user.username);
+			}
+			if(callback) {
+				callback(retArr);
+			}
+		}, 100)
 	}
 };
