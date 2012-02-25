@@ -47,7 +47,7 @@ Create main.js in cloud folder, add following code:
 			};
 		}
 
-Above script will return all users defined in users.js in cloud folder.
+Above script will return all users defined in users.js on cloud side.
 
 Add a load method to users model in user.js in ./app/models folder which will be like:
 
@@ -134,7 +134,7 @@ We need to invoke the function through $fh.act on client-side. Change userValida
 
 -----
 
-Now, users data and valdation process have been moved to cloud-side. With the power of decoupling of MVC, we did not even touch the source code of controller(userAuth.js) and views to perform the modification.
+Now, users data and validation process have been moved to cloud-side. With the power of decoupling of MVC, we did not even touch the source code of controller(userAuth.js) and views to perform the modification.
 
 Next tutorial (v6 branch) will integrate google map to app and demostrate how controller is applied.
 
