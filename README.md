@@ -1,103 +1,140 @@
-#Data Process with Model (v4 Branch)
+#Use Cloud Data Retrieval (v5 branch)
+
+It is not cool to use Mock-up data stored on client source code. Feedhenry applications could use Cloud, Local storage, etc as model data source. 
+In the previous branch, the data we used and validation process happen on client-side.
+Usually, those data should be stored on cloud-side and the validation process should happen there as well.
 
 ## Outline
 
-* How to create a model
-* How to process data action request in non-blocking way
-* How to perform a data action in controller
+* Retrieve user data from cloud and manage data in model.
+* Move user validation process to cloud-side.
 
-## Step1 -- Create a model
+### Step1 -- Use cloud retrieval data.
 
-Add user.js in ./app/models folder 
+Before we started, we assume following scenario:
 
-Put following code:
+When the app starting up, user data need to be pulled from cloud-side.
+
+Create users.js in cloud folder. add following code:
+
+		var users = [{
+			username : "Joe",
+			password : "12345"
+		}, {
+			username : "John",
+			password : "12345"
+		},{
+			username : "Sean",
+			password : "12345"
+		},{
+			username : "Michael",
+			password : "12345"
+		},{
+			username : "James",
+			password : "12345"
+		},{
+			username : "Daniel",
+			password : "12345"
+		}];
+
+This defines a set of users that storec on cloud side. Developers could also use Database, SOAP, or REST to retrieve data.
+
+Create main.js in cloud folder, add following code:
+
+		function getUsers() {
+			return {
+				data : users
+			};
+		}
+
+Above script will return all users defined in users.js in cloud folder.
+
+Add a load method to users model in user.js in ./app/models folder which will be like:
 
 		/**
 		 * User model.
 		 */
 		
-		var users = { //model uses mockup data
-			data : [{
-				username:"Joe",
-				password:"12345"
-			}],
-			isDataLoaded : true,
+		var users = {
+			data : [],
+			isDataLoaded : false,
 			load : function(callback) {
-				//load data to model. Using mock up data. Callback directly.
-				if(callback) {
-					callback()
-				}
-			},
-			userValidate : function(username, password, cb) {
-				var users = this.data;
-				//unblock process
-				setTimeout(function() {
-					for(var i = 0; i < users.length; i++) {
-						var user = users[i];
-						if(user.username === username && user.password === password) {
-							if(cb != undefined) {
-								cb(true);
-								return;
-							}
-						}
-					}
-					if(cb != undefined) {
-						cb(false);
-					}
-				}, 100);
-			}
-		};
-
-To keep it simple, we use local mock-up data at this stage. The credential for login is: username: Joe, password: 12345
-
-## Step2 -- unblock process
-
-Since model data process could be very heavy, it is required to use non-blocking method which is all methods of a model will return directly and invoke callback function once data process finished.
-
-## Step3 -- Perform data action in controller
-
-Change code in userAuth.js as:
-
-		var userAuth = {
-			login : function() {
-				if(users == undefined) {
-					return;
-				}
-				var username, pwd, usernameElement, passwordElement;
-				//define variables
-				usernameElement = document.getElementById("username");
-				passwordElement = document.getElementById("password");
-				username = usernameElement.value;
-				pwd = passwordElement.value;
-				users.userValidate(username, pwd, function(res) {
-					if(res === true) {
-						document.getElementById("name").innerHTML = username;
-						return changeView("logged");
-					} else {
-						alert("Invalid username or password");
+				var that = this;
+				$fh.act({
+					act : "getUsers"
+				}, function(res) {
+					that.data = res.data;
+					that.isDataLoaded = true;
+					if(callback) {
+						callback(res.data);
 					}
 				});
 			},
-			logout : function() {
+			userValidate : function(username, password, cb) {
+			
+			.......
+
+When load method is invoked, client will perform a "getUser" action on cloud which will retrieve all pre-defined user.
+After data returned, model will call callback function.
+
+Change starting up code in init.js as:
+
+		$(document).ready(function() {
+			importViews(function() {
 				changeView("mainPage");
+				var mainPageView = getView("mainPage");
+				mainPageView.find("#info").html("Loading User Data....");
+				users.load(function() {
+					mainPageView.find("#info").html("User Data Loaded!");
+					mainPageView.find("#loginBtn").removeAttr("disabled");
+					mainPageView.find("#loginBtn").button("enable");
+				});
+				bindEvents();
+			});
+		});
+
+When app starts up, users model will load data and once loaded view would display status.
+
+### Step2 -- Validate user on cloud side.
+
+add following code in main.js on cloud
+
+		function validateUser(param) {
+			var name = param.name;
+			var pwd = param.pwd;
+			for(var i = 0; i < users.length; i++) {
+				var user = users[i];
+				if(user.username === name && user.password === pwd) {
+						return {res:"valid"};
+				}
 			}
+			return {res:"invalid"};
 		}
-		
-As the code above, we use users model to perform user validation action and once it is finished the callback funciton will be called with result.
 
-Now, run the project in Feedhenry platform. The app could now validate user. 
+The function will compare username and password in request with cloud stored users and return result.
 
-------
+We need to invoke the function through $fh.act on client-side. Change userValidate function in users model:
 
-So far, a small but containing all Model-View-Controller app has been devloped.
+		userValidate : function(username, password, cb) {
+			var users = this.data;
+			$fh.act({
+				act : "validateUser",
+				req : {
+					name : username,
+					pwd : password
+				}
+			}, function(res) {
+				if(res.res === "valid") {
+					cb(true);
+				} else {
+					cb(false);
+				}
+			});
+		}
 
-The next steps will be more advanced. 
+-----
 
-Please checkout:
+Now, users data and valdation process have been moved to cloud-side. With the power of decoupling of MVC, we did not even touch the source code of controller(userAuth.js) and views to perform the modification.
 
-* use cloud data/ cloud validation (v5 branch)
-* use 3rd party components  (google map) (v6 branch)
-* construct a list view (v7 branch)
-* use jQuery Mobile.  (v8 branch)
-
+Next tutorial (v6 branch) will integrate google map to app and demostrate how controller is applied.
 
