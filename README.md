@@ -6,7 +6,7 @@ Create an empty folder to contain code base.
 
 Create project structure (directories and files) as following graphic:
 
-<img src="https://github.com/keyang-feedhenry/fh-mvc-simple/raw/v1/docs/structure.png"/>
+<img src="https://github.com/feedhenry/fh-mvc-simple/raw/v1/docs/structure.png"/>
 
 
 * basic.css includs CSS definitions.
@@ -91,5 +91,5 @@ Finally, write some basic HTML code to index.html.
 			
 
 
-Ok. Fingers crossed. Let's proceed to <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>.
+Ok. Fingers crossed. Let's proceed to <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>.
 
