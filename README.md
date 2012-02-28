@@ -136,5 +136,5 @@ We need to invoke the function through $fh.act on client-side. Change userValida
 
 Now, users data and validation process have been moved to cloud-side. With the power of decoupling of MVC, we did not even touch the source code of controller(userAuth.js) and views to perform the modification.
 
-<a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v6"> v6 branch</a> will integrate google map to app and demostrate how controller handles user actions such as pin my current locatin on map.
+<a href="https://github.com/feedhenry/fh-mvc-simple/tree/v6"> v6 branch</a> will integrate google map to app and demostrate how controller handles user actions such as pin my current locatin on map.
 
