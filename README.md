@@ -97,5 +97,5 @@ The next steps will be more advanced. You could regard this as homework :)
 2. use 3rd party components  (google map): Add a map controller that will process end-users map requests such as pin my current location on map. ( HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v6">v6 branch</a>)
 3. construct a list view: Create a new view that will list all users that currently in users model. (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v7">v7 branch</a>)
 4. use jQuery Mobile: Use 3rd party UI library jQuery Mobile to render UI.  (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v8">v8 branch</a>)
-
+5. A little refactor: Move and categorise DOM manipulating code written in controllers.(HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v9">v9 branch</a>)
 
