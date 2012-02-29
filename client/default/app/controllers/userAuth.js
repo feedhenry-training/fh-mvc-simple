@@ -3,15 +3,13 @@ var userAuth = {
 		if(users == undefined) {
 			return;
 		}
-		var username, pwd, usernameElement, passwordElement;
-		//define variables
-		usernameElement = document.getElementById("username");
-		passwordElement = document.getElementById("password");
-		username = usernameElement.value;
-		pwd = passwordElement.value;
+		var username,pwd;
+		var credential=domMan.mainPage.getCredential();
+		username=credential.username;
+		pwd=credential.pwd;
 		users.userValidate(username, pwd, function(res) {
 			if(res === true) {
-				document.getElementById("name").innerHTML = username;
+				domMan.logged.setUserName(username);
 				return changeView("logged");
 			} else {
 				alert("Invalid username or password");
