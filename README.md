@@ -1,80 +1,101 @@
-#The first controller (v3 branch)
+#Data Process with Model (v4 Branch)
 
-## Outlines
+## Outline
 
-* How to create a controller
-* How to handle dom events
-* How to send messages to controller
-* How to change a view
+* How to create a model
+* How to process data action request in non-blocking way
+* How to perform a data action in controller
 
-## Step1 -- Create a Controller
+## Step1 -- Create a model
 
-Add userAuth.js to ./app/controllers folder and put following code:
+Add user.js in ./app/models folder 
+
+Put following code:
+
+		/**
+		 * User model.
+		 */
+		
+		var users = { //model uses mockup data
+			data : [{
+				username:"Joe",
+				password:"12345"
+			}],
+			isDataLoaded : true,
+			load : function(callback) {
+				//load data to model. Using mock up data. Callback directly.
+				if(callback) {
+					callback()
+				}
+			},
+			userValidate : function(username, password, cb) {
+				var users = this.data;
+				//unblock process
+				setTimeout(function() {
+					for(var i = 0; i < users.length; i++) {
+						var user = users[i];
+						if(user.username === username && user.password === password) {
+							if(cb != undefined) {
+								cb(true);
+								return;
+							}
+						}
+					}
+					if(cb != undefined) {
+						cb(false);
+					}
+				}, 100);
+			}
+		};
+
+To keep it simple, we use local mock-up data at this stage. The credential for login is: username: Joe, password: 12345
+
+## Step2 -- unblock process
+
+Since model data process could be very heavy, it is required to use non-blocking method which is all methods of a model will return directly and invoke callback function once data process finished.
+
+## Step3 -- Perform data action in controller
+
+Change code in userAuth.js as:
 
 		var userAuth = {
 			login : function() {
+				if(users == undefined) {
+					return;
+				}
 				var username, pwd, usernameElement, passwordElement;
 				//define variables
 				usernameElement = document.getElementById("username");
 				passwordElement = document.getElementById("password");
 				username = usernameElement.value;
 				pwd = passwordElement.value;
-				document.getElementById("name").innerHTML = username;
-				return changeView("logged");
+				users.userValidate(username, pwd, function(res) {
+					if(res === true) {
+						document.getElementById("name").innerHTML = username;
+						return changeView("logged");
+					} else {
+						alert("Invalid username or password");
+					}
+				});
 			},
 			logout : function() {
 				changeView("mainPage");
 			}
 		}
-
-Dont forget add reference to index.html
-
-## Step2 -- Events Handlers
-
-For better code maintainability, we would better define DOM events in one folder. Events definition could be separated by view names. In this example, due to few events, we put them in one file.
-
-Create bind.js in ./app/events folder
-
-Add following code:
-
-		function bindEvents(){
-			//event handlers
-		}
-
-Link bind.js to index.html
-
-**Question**: When bindEvents function get invoked?
-
-**Answer**: Since binding events works only when target element exists, we could invoke bindEvents once all views have been imported.
-
-Currently, we need add two events:
-
-* login button click event
-* logout button click event
-
-Add following code to bindEvents function :
-
-		$("#loginBtn").bind("click",function(){
-			userAuth.login();
-		});
 		
-		$(".logout").bind("click",function(){
-			userAuth.logout();
-		});
-		
-## Step3 -- Send Message to Controller
+As the code above, we use users model to perform user validation action and once it is finished the callback funciton will be called with result.
 
-To send message to a controller, the most direct way is: ControllerName.method(param) just like the code above: userAuth.login();
+Now, run the project in Feedhenry platform. The app could now validate user. 
 
-## Step4 -- Change view
+------
 
-Change view means hide current view and display next view. Just simply invoke changeView function defined in viewutil.js with viewId as parameter.
+So far, a small but containing all Model-View-Controller app has been devloped.
 
+The next steps will be more advanced. You could regard this as homework :)
 
-Now, if you run the project in Feedhenry Platform, you are able to login with any credentials and logout.
-
-Next chapter will introduce how to define a model and validate credential data using model. Please checkout <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v4">v4 branch</a>.
-
-
-
+1. use cloud data/ cloud validation: Move mockup user data from client to cloud and perform validation process on cloud not client. ( HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v5">v5 branch</a>)
+2. use 3rd party components  (google map): Add a map controller that will process end-users map requests such as pin my current location on map. ( HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v6">v6 branch</a>)
+3. construct a list view: Create a new view that will list all users that currently in users model. (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v7">v7 branch</a>)
+4. use jQuery Mobile: Use 3rd party UI library jQuery Mobile to render UI.  (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v8">v8 branch</a>)
+5. A little refactor: Move and categorise DOM manipulating code written in controllers.(HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v9">v9 branch</a>)
 
