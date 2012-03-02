@@ -90,7 +90,7 @@ Finally, write some basic HTML code to index.html.
 
 			
 
-(The complete code is in v1 branch.)
+(The complete code is in <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v1">v1 branch</a>.)
 
-Ok. Fingers crossed. Let's proceed to <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v1">v1 branch</a>.
+Ok. Fingers crossed. Let's [proceed] (https://github.com/feedhenry/fh-mvc-simple/tree/v1) 
 
