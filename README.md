@@ -1,4 +1,4 @@
-# "MainPage" View and "Logged" View Implementation (v2 branch)
+# "MainPage" View and "Logged" View Implementation
 
 ## Outline:
 
@@ -59,9 +59,9 @@ Link init.js to index.html
 
 Now the project will render a page that asks users to login. Since there is no events handler, the login button will not work.
 
-(Complete Code please checkout <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>)
+(Complete Code please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>)
 
-[Next step](https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2) will introduce how to create a controller and how to send controller messages from UI.
+[Next step](https://github.com/feedhenry/fh-mvc-simple/tree/v2) will introduce how to create a controller and how to send controller messages from UI.
 
 
 
