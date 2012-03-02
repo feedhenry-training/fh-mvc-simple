@@ -1,95 +1,68 @@
-# Preparation (v1 Branch)
+# "MainPage" View and "Logged" View Implementation (v2 branch)
 
-To start with a Feedhenry App, simply just follow steps:
+## Outline:
 
-Create an empty folder to contain code base.
+1. How to add multiple views to project.
+2. How to render a view at the start of the app.
 
-Create project structure (directories and files) as following graphic:
+## Step1 -- Add views to project.
 
-<img src="https://github.com/feedhenry/fh-mvc-simple/raw/v1/docs/structure.png"/>
+In index.html, add two view place holders:
 
+		<div class="page" id="mainPage"></div>
+		<div class="page" id="logged"></div> 
 
-* basic.css includs CSS definitions.
-* jquery.js contains the latest jQuery library (for more information about jQuery please checkout: http://jquery.com)
+Create two view files in ./app/views folder: mainPage.html & logged.html. 
+Make sure file name should be consistent to the id of view place holders in index.html.
 
-put following code to viewutil.js
-
-			
-			/**
-			 * 	 hide last view (div) and Load next view(div). View is specified by id.
-			 */
-			var lastView = null;
-			function changeView(viewId) {
-				// get next view through page id
-				var nextView = getView(viewId);
-				if(nextView.length === 0) {
-					console.log("Could not find view with ID:" + viewId);
-					return;
-				}
-				if(lastView != null) {
-					//hide last view
-					lastView.removeClass("active");
-				}
-			
-				// display next view
-				nextView.addClass("active");
-				// view has been loaded
-				lastView = nextView;
-			}
-			
-			/**
-			 *  get view with specified id
-			 * 
-			 */
-			function getView(viewId){
-				return $("#"+viewId);
-			}
-			
-			/**
-			 * import views html content to DOM.
-			 */
-			function importViews(callback){
-				var pages=$(".page");
-				var viewFolder="./app/views/";
-				var count=pages.length;
-				pages.each(function(){
-					var page=$(this);
-					var path=viewFolder+page.attr("id")+".html";
-					$.ajax({
-						url:path,
-						dataType:"text",
-						success:function(res){
-							console.log(page.attr("id"));
-							$("#"+page.attr("id")).html(res);
-							count--;
-							if (count===0 && callback){
-								callback();
-							}
-						},
-						error:function(){
-							debugger;
-						}
-					});
-				});
-			}
-			
-Above code does some repeated and tedious view manipulation work.			
-			
-Finally, write some basic HTML code to index.html.
-
-		<!DOCTYPE HTML>
-		<html>
-			<head>
-				<link rel="stylesheet" type="text/css" href="./css/basic.css" />
-				<script type="text/javascript" src="./js/jquery.js"></script>
-				<script type="text/javascript" src="./js/viewutil.js"></script>
-			</head>
-			<body>
-			</body>
-		</html>
-
-			
+Add following code to mainPage.html
+		
+		<div style="text-align:center">
+			<h1>Welcome,Please login:</h1>
+			<p>
+				<label for="username">Username:</label>
+				<input type="text" id="username" placeholder="UserName"/>
+			</p>
+			<p>
+				<label for="password">Password:</label>
+				<input type="password" id="password" placeholder="Password"/>
+			</p>
+			<p>
+				<input type="button" value="Login" id="loginBtn"  disabled="disabled" />
+			</p>
+			<p id="info" ></p>
+		</div>
 
 
-Ok. Fingers crossed. Let's proceed to <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>.
+Add following code to logged.html
+
+		<h1>Welcome to Login</h1>
+		<h3>Your Name is:<span id="name"></span></h3>
+		<input  type="button" value="logout" class="logout" />
+
+The content of above two files will be loaded and injected to index.html in different placeholders.
+
+## Step 2 -- Render a View(MainPage View) at the start of the app.
+
+Add a init.js file to ./js folder. init.js will do some initialisation before app really loaded.
+Add following code to init.js
+
+		$(document).ready(function() {
+			importViews(function() {//import all views. callback when finished
+				changeView("mainPage");
+				// go to the first view: mainPage
+				var mainPageView = getView("mainPage");
+			});
+		});
+
+Link init.js to index.html
+
+Now the project will render a page that asks users to login. Since there is no events handler, the login button will not work.
+
+(Complete Code please checkout <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>)
+
+[Next step](https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v2) will introduce how to create a controller and how to send controller messages from UI.
+
+
+
 
