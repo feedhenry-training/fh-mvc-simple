@@ -1,4 +1,4 @@
-# Preparation (v1 Branch)
+# Preparation
 
 To start with a Feedhenry App, simply just follow steps:
 
@@ -90,6 +90,7 @@ Finally, write some basic HTML code to index.html.
 
 			
 
+(The complete code is in v1 branch.)
 
-Ok. Fingers crossed. Let's proceed to <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v2">v2 branch</a>.
+Ok. Fingers crossed. Let's proceed to <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v1">v1 branch</a>.
 
