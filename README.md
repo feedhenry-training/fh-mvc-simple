@@ -1,76 +1,67 @@
-# Google Map (v6 Branch)
+# Another view -- user list
 
-##Outline
+## Outline
 
-* Pin current location on google map.
+* Add method to users model
+* Add user controller
+* Add user list view
 
-### Step1 -- Create a map controller
+### Step1 -- Add method to users model
 
-Create map.js file in ./app/controllers folder
+Add getUserList function to users model as following code:
 
-Link it in index.html
+		getUserList : function(callback) {
+				var retArr = [];
+				var users = this.data;
+				setTimeout(function() {
+					for(var i = 0; i < users.length; i++) {
+						var user = users[i];
+						retArr.push(user.username);
+					}
+					if(callback) {
+						callback(retArr);
+					}
+				}, 100)
+			}
+			
+The funciton will return a copy of current user data store in model.
 
-### Step 2 -- add user action in controller: pin current location
 
-add following content to map.js
+### Step2 -- Add user controlelr
 
-		var map = {
-			pinCurrentLocation : function() {
-				changeView("map");
-				var mapView = getView("map");
-		
-				mapView.find("#status").html("Retriving your location");
-				$fh.geo({
-					interval : 0
-				}, function(res) {
-					mapView.find("#status").html("Loading map...");
-					mapView.find("#lat").text(res.lat);
-					mapView.find("#long").text(res.lon);
-					$fh.map({
-						target : '#map_div',
-						lat : res.lat,
-						lon : res.lon,
-						zoom : 13
-					}, function(map) {
-						mapView.find("#status").html("Done");
-						var myLatLng=new google.maps.LatLng(res.lat,res.lon);
-						var marker = new google.maps.Marker({
-							position : myLatLng,
-							title : "You are here!"
-						});
-		
-						// To add the marker to the map, call setMap();
-						marker.setMap(map.map);
-					}, function(msg) {
-						console.log(msg);
-					});
-				})
+create user.js in ./app/controllers folder.  Put following code:
+
+		var user={
+			showUserList:function(){
+				getView("userList").find("#users").html("");
+				users.getUserList(function(arr){
+					for (var i=0;i<arr.length;i++){
+						var user=arr[i];
+						var html="<li>{0}</li>";
+						html=html.replace("{0}",user);
+						getView("userList").find("#users").append(html);
+					}
+					changeView("userList");
+				});
 			},
-			back : function() {
+			back:function(){
 				changeView("logged");
 			}
 		};
 
-
-The pinCurrentLocation method will locate current location first and mark it on google map. The controller updates view.
-
-### Step 3 -- add map view 
-
-Create map.html in ./app/views folder and add a map placeholder in index.html
-
-put following content to map.html
-
-		<h1>Map</h1>
-		<div id="map_div"></div>
-		<p>
-			Your Location:<span id="lat"></span>, <span id="long"></span>
-		</p>
-		<p>
-			Status:<span id="status"></span>
-		</p>
-		<button id="mapback" >
-			Back
-		</button>
-		<input type="button"  value="logout" class="logout" />
+showUserList function will invoke getUserList funciton in users model and update UI.
 
 
+### Step3 -- Add user list view
+
+create userList.html in ./app/views folder. Put following content:
+
+		<div>
+			<h1>User List</h1>
+			<ul id="users" data-role="listview"></ul>
+			<button id="userBack">
+				Back
+			</button>
+			<input type="button" value="logout" class="logout" />
+		</div>
+		
