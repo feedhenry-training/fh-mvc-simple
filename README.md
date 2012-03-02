@@ -1,65 +1,82 @@
-# "MainPage" View and "Logged" View Implementation (v2 branch)
+#The first controller (v3 branch)
 
-## Outline:
+## Outlines
 
-1. How to add multiple views to project.
-2. How to render a view at the start of the app.
+* How to create a controller
+* How to handle dom events
+* How to send messages to controller
+* How to change a view
 
-## Step1 -- Add views to project.
+## Step1 -- Create a Controller
 
-In index.html, add two view place holders:
+Add userAuth.js to ./app/controllers folder and put following code:
 
-		<div class="page" id="mainPage"></div>
-		<div class="page" id="logged"></div> 
-
-Create two view files in ./app/views folder: mainPage.html & logged.html. 
-Make sure file name should be consistent to the id of view place holders in index.html.
-
-Add following code to mainPage.html
-		
-		<div style="text-align:center">
-			<h1>Welcome,Please login:</h1>
-			<p>
-				<label for="username">Username:</label>
-				<input type="text" id="username" placeholder="UserName"/>
-			</p>
-			<p>
-				<label for="password">Password:</label>
-				<input type="password" id="password" placeholder="Password"/>
-			</p>
-			<p>
-				<input type="button" value="Login" id="loginBtn"  disabled="disabled" />
-			</p>
-			<p id="info" ></p>
-		</div>
-
-
-Add following code to logged.html
-
-		<h1>Welcome to Login</h1>
-		<h3>Your Name is:<span id="name"></span></h3>
-		<input  type="button" value="logout" class="logout" />
-
-The content of above two files will be loaded and injected to index.html in different placeholders.
-
-## Step 2 -- Render a View(MainPage View) at the start of the app.
-
-Add a init.js file to ./js folder. init.js will do some initialisation before app really loaded.
-Add following code to init.js
-
-		$(document).ready(function() {
-			importViews(function() {//import all views. callback when finished
+		var userAuth = {
+			login : function() {
+				var username, pwd, usernameElement, passwordElement;
+				//define variables
+				usernameElement = document.getElementById("username");
+				passwordElement = document.getElementById("password");
+				username = usernameElement.value;
+				pwd = passwordElement.value;
+				document.getElementById("name").innerHTML = username;
+				return changeView("logged");
+			},
+			logout : function() {
 				changeView("mainPage");
-				// go to the first view: mainPage
-				var mainPageView = getView("mainPage");
-			});
+			}
+		}
+
+Dont forget add reference to index.html
+
+## Step2 -- Events Handlers
+
+For better code maintainability, we would better define DOM events in one folder. Events definition could be separated by view names. In this example, due to few events, we put them in one file.
+
+Create bind.js in ./app/events folder
+
+Add following code:
+
+		function bindEvents(){
+			//event handlers
+		}
+
+Link bind.js to index.html
+
+**Question**: When bindEvents function get invoked?
+
+**Answer**: Since binding events works only when target element exists, we could invoke bindEvents once all views have been imported.
+
+Currently, we need add two events:
+
+* login button click event
+* logout button click event
+
+Add following code to bindEvents function :
+
+		$("#loginBtn").bind("click",function(){
+			userAuth.login();
 		});
+		
+		$(".logout").bind("click",function(){
+			userAuth.logout();
+		});
+		
+## Step3 -- Send Message to Controller
 
-Link init.js to index.html
+To send message to a controller, the most direct way is: ControllerName.method(param) just like the code above: userAuth.login();
 
-Now the project will render a page that asks users to login. Since there is no events handler, the login button will not work.
+## Step4 -- Change view
 
-Next step in <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v3">v3 branch</a> will introduce how to create a controller and how to send controller messages from UI.
+Change view means hide current view and display next view. Just simply invoke changeView function defined in viewutil.js with viewId as parameter.
+
+
+Now, if you run the project in Feedhenry Platform, you are able to login with any credentials and logout.
+
+
+(Complete code is in <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v3">v3 branch</a>)
+
+Next chapter will introduce how to define a model and validate credential data using model. Please checkout <a href="https://github.com/keyang-feedhenry/fh-mvc-simple/tree/v3">v3 branch</a>.
 
 
 
