@@ -88,6 +88,6 @@ Features:
 * List All Users
 * Integrate with jQuery Mobile
 
-Please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v1">v1 branch</a> to proceed with the tutorial.
+Please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v0">v0 branch</a> to proceed with the tutorial.
 
 
