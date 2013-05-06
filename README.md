@@ -6,7 +6,7 @@
 * Controller -- Process User Actions
 * Model -- Data Logic
 
-<img src="https://github.com/feedhenry/fh-mvc-simple/raw/master/docs/MVCMODEL.png"/>
+<img src="https://github.com/feedhenry-training/fh-mvc-simple/raw/master/docs/MVCMODEL.png"/>
 
 ## Differences between Feedhenry Hybrid App and a Website
 * Event Driven -- User actions trigger DOM events.
@@ -19,7 +19,7 @@
 * Maintainability: Simpler to debug etc.
 * Readability: Easier for other developers using code.
 
-<img src="https://github.com/feedhenry/fh-mvc-simple/raw/master/docs/FHMVCMODEL.png"/>
+<img src="https://github.com/feedhenry-training/fh-mvc-simple/raw/master/docs/FHMVCMODEL.png"/>
 
 ## Model-View-Controller Code
 
@@ -88,6 +88,6 @@ Features:
 * List All Users
 * Integrate with jQuery Mobile
 
-Please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v0">v0 branch</a> to proceed with the tutorial.
+Please checkout <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v0">v0 branch</a> to proceed with the tutorial.
 
 
