@@ -1,17 +1,34 @@
-function getUsers() {
-	return {
+var users=require("users.js");
+
+
+function getUsers(params, callback) {
+	callback(null, {
 		data : users
-	};
+	});
 }
 
-function validateUser(param) {
+function validateUser(param, callback) {
 	var name = param.name;
 	var pwd = param.pwd;
+	var res=null;
 	for(var i = 0; i < users.length; i++) {
 		var user = users[i];
 		if(user.username === name && user.password === pwd) {
-				return {res:"valid"};
+			res= {
+				res : "valid"
+			};
 		}
 	}
-	return {res:"invalid"};
+	if (res==null){
+			res= {
+				res : "invalid"
+			};
+	}
+	
+	callback(null,res);
+}
+
+module.exports = {
+	getUsers : getUsers,
+	validateUser : validateUser
 }

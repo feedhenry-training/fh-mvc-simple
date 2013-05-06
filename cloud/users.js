@@ -17,3 +17,6 @@ var users = [{
 	username : "Daniel",
 	password : "12345"
 }];
+
+
+module.exports=users;
