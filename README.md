@@ -6,7 +6,7 @@ Create an empty folder to contain code base.
 
 Create project structure (directories and files) as following graphic:
 
-<img src="https://github.com/feedhenry/fh-mvc-simple/raw/v1/docs/structure.png"/>
+<img src="https://github.com/feedhenry-training/fh-mvc-simple/raw/v1/docs/structure.png"/>
 
 
 * basic.css includs CSS definitions.
@@ -90,7 +90,7 @@ Finally, write some basic HTML code to index.html.
 
 			
 
-(The complete code is in <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v1">v1 branch</a>.)
+(The complete code is in <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v1">v1 branch</a>.)
 
-Ok. Fingers crossed. Let's [proceed] (https://github.com/feedhenry/fh-mvc-simple/tree/v1) 
+Ok. Fingers crossed. Let's [proceed] (https://github.com/feedhenry-training/fh-mvc-simple/tree/v1) 
 
