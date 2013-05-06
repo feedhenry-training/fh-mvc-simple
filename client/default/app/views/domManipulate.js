@@ -34,9 +34,11 @@ var domMan = {
 	},
 	map:{
 		setStatus:function(status){
+      var mapView = getView("map");
 			mapView.find("#status").html(status);
 		},
 		setLatLon:function(lat,lon){
+      var mapView = getView("map");
 			mapView.find("#lat").text(lat);
 			mapView.find("#long").text(lon);
 		}
