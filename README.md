@@ -91,13 +91,13 @@ Now, run the project in Feedhenry platform. The app could now validate user.
 
 So far, a small but containing all Model-View-Controller app has been devloped.
 
-Please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v4">v4 branch</a> for complete code base.
+Please checkout <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v4">v4 branch</a> for complete code base.
 
 The next steps will be more advanced. You could regard this as homework :)
 
-1. use cloud data/ cloud validation: Move mockup user data from client to cloud and perform validation process on cloud not client. ( HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v4">v4 branch</a>)
-2. use 3rd party components  (google map): Add a map controller that will process end-users map requests such as pin my current location on map. ( HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v5">v5 branch</a>)
-3. construct a list view: Create a new view that will list all users that currently in users model. (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v6">v6 branch</a>)
-4. use jQuery Mobile: Use 3rd party UI library jQuery Mobile to render UI.  (HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v7">v7 branch</a>)
-5. A little refactor: Move and categorise DOM manipulating code written in controllers.(HINT: <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v8">v8 branch</a>)
+1. use cloud data/ cloud validation: Move mockup user data from client to cloud and perform validation process on cloud not client. ( HINT: <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v4">v4 branch</a>)
+2. use 3rd party components  (google map): Add a map controller that will process end-users map requests such as pin my current location on map. ( HINT: <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v5">v5 branch</a>)
+3. construct a list view: Create a new view that will list all users that currently in users model. (HINT: <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v6">v6 branch</a>)
+4. use jQuery Mobile: Use 3rd party UI library jQuery Mobile to render UI.  (HINT: <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v7">v7 branch</a>)
+5. A little refactor: Move and categorise DOM manipulating code written in controllers.(HINT: <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v8">v8 branch</a>)
 
