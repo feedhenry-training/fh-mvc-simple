@@ -74,7 +74,7 @@ Change view means hide current view and display next view. Just simply invoke ch
 Now, if you run the project in Feedhenry Platform, you are able to login with any credentials and logout.
 
 
-(Complete code is in <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v3">v3 branch</a>)
+(Complete code is in <a href="https://github.com/feedhenry-training/fh-mvc-simple/tree/v3">v3 branch</a>)
 
 Next chapter will introduce how to define a model and validate credential data using model. Please checkout <a href="https://github.com/feedhenry/fh-mvc-simple/tree/v3">v3 branch</a>.
 
